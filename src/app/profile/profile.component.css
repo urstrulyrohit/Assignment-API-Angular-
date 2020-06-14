@@ -1,0 +1,39 @@
+
+  .card-profile {
+    max-width: 700px;
+    border-radius: 0px !important;
+  }
+  ::ng-deep .mat-card-header-text {
+      margin: 7px 16px !important ;
+  
+  }
+  .card-log{
+    max-width: 700px;
+    border-radius: 0px !important;
+  }
+  .card-options{
+    border-radius: 0px !important;
+  }
+
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }  
+  .profile-font{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;             
+  }
+ .header-main{
+   height:70px;
+   background-color: black;
+   width: 100%;
+  }
+  .header-title{
+ color:white;font-size: 31px;font-weight: 500;display: flex;place-content: center;margin-top: 18px;
+  }
+  .card-header-profile{
+    background-color: darkblue;color: white;padding:18px 10px 10px 10px;
+  }
+  .arrows{
+    width: 150px;border-radius: 0px;
+  }

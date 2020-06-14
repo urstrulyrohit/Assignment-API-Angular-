@@ -1,0 +1,113 @@
+<div class="ui-g">
+  <div class="ui-g-12" class="header-main">
+   <span class="header-title"> ASSIGNMENT </span>
+  </div>
+</div>
+<div class="ui-g" style="background-color: #f1f1f1;margin-bottom: 0px;padding-bottom: 27px;">
+<!------------------------------------------ User Details ----------------------------------------------->
+<div class="ui-g-6" *ngIf="this.postbody === false">
+  <div *ngFor="let user of listUsers">
+  <div *ngIf="user.id === this.userId">
+    <mat-card class="card-profile card-header-profile" >
+        <mat-card-header>
+          <!-- <div class="ui-g"> -->
+            <div class="ui-g-1" style="margin-left:-28px;font-size: 28px;">
+              <i class="fas fa-arrow-left" matTooltip="Previous User" matTooltipPosition="above" (click)="decreaseUserId()"></i>
+            </div>
+            <div class="ui-g-10">
+              <mat-card-title style="text-align-last: center;margin-top:10px;font-family: 'Tenali Ramakrishna', sans-serif;font-size: 43px;">{{user.name}}</mat-card-title>
+            </div>
+            <div class="ui-g-1" style="margin-left:22px;font-size: 28px;">
+              <i class="fas fa-arrow-right" matTooltip="Next User" matTooltipPosition="above"(click)="increaseUserId()"></i>
+            </div>
+          <!-- </div> -->
+        </mat-card-header>
+    </mat-card>
+    <mat-card class="card-profile">
+        <!-- <div class="ui-g-2"><img src="../../assets/avatar.png" alt="nolof"></div> -->
+        <div class="ui-g-12">
+    <mat-card-content>
+        <mat-card style="background-color:#f1f1f1;" class="card-options" >
+            <div class="ui-g">
+                <div class="ui-g-6"><mat-card class="profile-font"><strong>Name:&nbsp;</strong>{{user.name}}</mat-card></div>
+                <div class="ui-g-6"><mat-card class="profile-font"><strong>Username:&nbsp;</strong>{{user.username}}</mat-card></div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-12"><mat-card class="profile-font"><strong>Street:&nbsp;</strong>{{user.address.street}}<br><strong>Suite:&nbsp;</strong>{{user.address.suite}}<br><strong>City:&nbsp;</strong>{{user.address.city}}<br><strong>Zipcode:&nbsp;</strong>{{user.address.zipcode}}</mat-card></div>
+            </div>    
+            <div class="ui-g">
+                <div class="ui-g-6"><mat-card class="profile-font"><strong>Phone:&nbsp;</strong>{{user.phone}}</mat-card></div>
+                <div class="ui-g-6"><mat-card class="profile-font"><strong>Website:&nbsp;</strong>{{user.website}}</mat-card></div>
+            </div>
+            <div class="ui-g">
+              <div class="ui-g-12"><mat-card class="profile-font"><strong>Company:&nbsp;</strong>{{user.company.name}}</mat-card></div> 
+            </div>  
+        </mat-card>
+      </mat-card-content>
+    </div>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="postsCount()" class="arrows">Posts: {{this.countPosts}}</button>
+        <button mat-raised-button color="accent" (click)="commentsCount()" class="arrows">Comments: {{this.countComments}}</button>
+        <button mat-raised-button color="warn" (click)="todosCount()" class="arrows">Todo: {{this.countTodos}}</button>
+      </mat-card-actions>
+    </mat-card>
+    </div>
+    </div>
+</div>
+<!--------------------------------- Logs -------------------------------------->
+<div class="ui-g-6" *ngIf="this.postbody === false">
+    <mat-card class="card-log" style="background-color: darkblue;color: white;padding:18px 10px 10px 10px">
+        <mat-card-header>
+          <mat-card-title style="text-align-last: center;margin-top:10px;font-family: 'Tenali Ramakrishna', sans-serif;font-size: 43px;">Post</mat-card-title>
+        </mat-card-header>
+    </mat-card>
+    <mat-card class="card-log" style="overflow-y: scroll;height:68vh;background-color: #f1f1f1;">
+    <mat-card-content>
+        <div *ngFor="let post of listPosts">
+          <div *ngIf="post.userId ===  this.userId">
+            <mat-card style="margin-bottom: 5px;border-radius: 0px;" >
+           <li><a (click)="selectedPost(post.id)" style="font-family: 'Staatliches', cursive;color: black;
+            text-decoration: none;
+            font-size: 18px;"> {{post.title}} </a></li>
+           </mat-card>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>   
+  
+</div>
+</div>
+<div class="ui-g">
+  <div class="ui-g-4"></div>
+  <div class="ui-g-4" >
+      <mat-card class="card-log" *ngIf="this.postbody === true" style="background-color: darkblue;margin-top:150px;color: white;padding:13px 1px 1px 1px">
+        <mat-card-header>
+          <div class="ui-g-11"><mat-card-title  matTooltip="Post Title" matTooltipPosition="above" style="font-family: 'Staatliches', cursive;color: white;margin-left: -18px;">{{this.selectedPosttitle}}</mat-card-title></div>
+          <div class="ui-g-1"><i matTooltip="Cancel" matTooltipPosition="right" class="far fa-window-close" (click)="onSelectcancel()"></i></div>
+          
+        </mat-card-header>
+    </mat-card>
+    <mat-card class="card-log" *ngIf="this.postbody === true">
+      <mat-card-content matTooltip="Post Body" matTooltipPosition="right" style="font-family: 'Sansita', sans-serif;font-size: 18px;">
+        {{this.selectedPostbody}}
+        </mat-card-content>
+      </mat-card>
+  </div>
+  <div class="ui-g-4"></div>
+
+</div>
+<!-- <div style="background-color:black;height: 41px;margin-top: -13px;">
+  <p style="color:white;    padding: 0px;
+  margin-bottom: 0px !important;
+  margin-top: 0px;
+  text-align: -webkit-center;
+  padding-top: 8px;
+  font-size: 17px;">
+    &copy;  Designed and Developed by Pranav</p>
+</div> -->
+<!-- <div class="ui-g">
+  <div class="ui-g-12" style="height:27px;background-color: black;">
+    
+  </div>
+
+</div> -->
